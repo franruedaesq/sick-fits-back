@@ -35,6 +35,7 @@ export default withAuth(
         origin: [
           process.env.FRONTEND_URL,
           "https://sick-fits-front.vercel.app",
+          "https://sick-fits-front-iyh0n6up4-franruedaesq.vercel.app",
         ],
         credentials: true,
       },
