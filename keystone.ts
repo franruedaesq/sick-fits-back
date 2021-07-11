@@ -32,7 +32,10 @@ export default withAuth(
   config({
     server: {
       cors: {
-        origin: [process.env.FRONTEND_URL],
+        origin: [
+          process.env.FRONTEND_URL,
+          "https://sick-fits-front.vercel.app/",
+        ],
         credentials: true,
       },
     },
