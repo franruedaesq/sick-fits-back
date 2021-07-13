@@ -9,6 +9,7 @@ import {
   statelessSessions,
 } from "@keystone-next/keystone/session";
 import { insertSeedData } from "./seed-data/index";
+import { sendPasswordResetEmail } from "./lib/mail";
 
 const databasURL =
   process.env.DATABASE_URL || "mongodb://localhost/keystone-sick-fits";
@@ -28,7 +29,8 @@ const { withAuth } = createAuth({
   },
   passwordResetLink: {
     async sendToken(args) {
-      console.log(args);
+      const { token, identity } = args;
+      await sendPasswordResetEmail(token, identity);
     },
   },
 });
