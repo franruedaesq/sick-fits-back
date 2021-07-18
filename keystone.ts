@@ -10,6 +10,8 @@ import {
 } from "@keystone-next/keystone/session";
 import { insertSeedData } from "./seed-data/index";
 import { sendPasswordResetEmail } from "./lib/mail";
+import { CartItem } from "./schemas/CartItem";
+import { extendGraphqlSchema } from "./mutations";
 
 const databasURL =
   process.env.DATABASE_URL || "mongodb://localhost/keystone-sick-fits";
@@ -61,7 +63,9 @@ export default withAuth(
       User,
       Product,
       ProductImage,
+      CartItem,
     }),
+    extendGraphqlSchema: extendGraphqlSchema,
     ui: {
       // Show the UI only for people who pass this test
       isAccessAllowed: ({ session }) => {
